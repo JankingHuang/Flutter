@@ -116,7 +116,33 @@ samples, guidance on mobile development, and a full API reference.
 * 创建状态管理类name_model。
 * 在name_game中增加provider的支持。
 * 在子组件中获取provider的name数据以及changeName方法。
-## Isolate 多线程
+
+# 事件处理
+## 触摸事件
+* Listener 来监听原始触发事件。
+ 
+### 命中测试（Hit test）
+* 手指按下，触发PointerDownEvent事件，按照DFS遍历渲染树（render object),
+* 对一每一个渲染对象进行命中测试（hit test），测试通过，则该渲染对象会被添加到HitTestResult列表中。
+
+### 事件分发（Event dispatch）
+* 测试完成后，会遍历HitTesResult列表，调用渲染对象的方法（handleEvent）来处理PointerDownEvent事件
+* 手指移动时，便会分发PointerMoveEvent事件。
+
+### 事件清理
+* 当手指抬起（PointerUpEvent）或者取消（PointerCancelEvent），会先对相应对事件进行分发，
+  分发完毕后清空HitTestResult列表
+# 手势识别
+* 手势系统有两个独立层。
+* * 第一层为原始指针（Pointer）事件，用于描述屏幕指针的移动位置。
+* * 第二层为手势，描述由一个或多个指针移动组成的语义动作（拖拽、缩放、双击等）。
+* GestureDetector 用于手势识别的功能性组件,内部使用一个或多个GestureDetector来识别各种手势。
+* GestureRecognizer 指针事件的语义化封装，通过Listener将原始指针事件转化为语义手势。
+## 手势冲突
+* Flutter 手势识别引入Arena概念。
+* 每一个手势识别器（GestureRecognizer）都是一个竞争者（GestureArenaMember)。
+
+# Isolate 多线程
 * 利用消息机制实现多线程。
 
 

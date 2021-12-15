@@ -42,6 +42,14 @@ class _Login extends State<Login> with TickerProviderStateMixin {
     );
   }
 
+  bool _showPassword = false;
+
+  void _togglevisibility() {
+    setState(() {
+      _showPassword = !_showPassword;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,6 +75,7 @@ class _Login extends State<Login> with TickerProviderStateMixin {
               hintText: '你的登录密码',
               prefixIcon: Icon(Icons.lock),
             ),
+            obscureText: true,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
