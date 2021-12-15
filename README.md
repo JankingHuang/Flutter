@@ -15,6 +15,10 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
+
+# 项目结构
+* 可以使用flutter-pro-cli 生成目录结构。
+
 # 组件Widget
 ## 常用组件
 * Text： 文本显示组件
@@ -49,6 +53,24 @@ samples, guidance on mobile development, and a full API reference.
 * 合并组件，将功能一致的组件合并。
 * 创建组件树，并优化该树。
 
+# Scheme
+## 内部跳转
+* 一种APP内跳转协议。
+* 通过Scheme协议在APP内实现一些页面的相互跳转。
+`
+[scheme]://[host][path]?[query]
+`
+## 外部跳转
+* 使用uni_links第三方库协助。
+* 外部跳转需要，根据平台的不同而配置。
+* 大部分APP内部Scheme时被禁用的，因此用户体验差。
+* 注册的Scheme相同导致冲突。
+
+## 其他
+* 可使用APP Links 和Univerial Link。
+
+
+
 # 动画
 ## Animation
 * 监听动画每一帧以及执行状态的变化。
@@ -67,6 +89,8 @@ samples, guidance on mobile development, and a full API reference.
 * 继承自Animatable<T>。
 
 
+
+
 # 事件循环机制
 ## Dart单线程
 ### 微任务队列
@@ -76,6 +100,22 @@ samples, guidance on mobile development, and a full API reference.
 
 任务执行完成后会先检查微任务队列，有就执行，没有就检查事件队列。
 
+
+# 状态选型对比
+## InheritedWidget
+* 提升到根节点，InheritedWidget 会判判断状态是否更新，以及会判断子组件是否有依赖；
+* 状态变化时，如果未使用该状态组件，则不会发生build。
+* 使用了该状态组件，如果组件的状态没有发生变化，也不会发build。
+## Redux
+* 单向数据流框架，第三方库，需要修改依赖。
+* 将所有的状态存储在store中，所有数据改变都是通过Action。
+* 然后Action触发Store存储，store变化触发所有应用的build操作。
+## Provider
+* 官方推荐
+### 使用步骤
+* 创建状态管理类name_model。
+* 在name_game中增加provider的支持。
+* 在子组件中获取provider的name数据以及changeName方法。
 ## Isolate 多线程
 * 利用消息机制实现多线程。
 

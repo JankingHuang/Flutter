@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:layout_app/routes/business_page.dart';
+import 'package:layout_app/routes/school_page.dart';
 import 'package:layout_app/routes/settings_page.dart';
 import 'package:layout_app/widgets/random_words.dart';
 
@@ -79,7 +80,7 @@ class _Home extends State<Home> {
             child: Business(),
           ),
           Center(
-            child: Text('School'),
+            child: School(),
           ),
           Center(
             child: ThemeRoute(),

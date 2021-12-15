@@ -47,6 +47,19 @@ class _ThemeRoute extends State<ThemeRoute> {
                 ],
               ),
             ),
+            GestureDetector(
+              child: const Text('GestureDetetor'),
+              onTap: () => debugPrint('clicked'),
+              onLongPress: () => debugPrint('Long Press'),
+              onDoubleTap: () => debugPrint('Double Tap'),
+            ),
+            Listener(
+              child: const Text('Text'),
+              onPointerDown: (event) => debugPrint('onPointerDown'),
+              onPointerUp: (event) => debugPrint('onPointerUp'),
+              onPointerMove: (event) => debugPrint('onPointerMove'),
+              onPointerCancel: (event) => debugPrint('onPointerCancel'),
+            ),
           ],
         ),
         floatingActionButton: FloatingActionButton(
