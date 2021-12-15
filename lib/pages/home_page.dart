@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:layout_app/routes/business_page.dart';
-import 'package:layout_app/routes/school_page.dart';
-import 'package:layout_app/routes/settings_page.dart';
+import 'package:layout_app/pages/business_page.dart';
+import 'package:layout_app/pages/school_page.dart';
+import 'package:layout_app/pages/settings_page.dart';
 import 'package:layout_app/widgets/random_words.dart';
 
 class Home extends StatefulWidget {
